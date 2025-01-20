@@ -15,7 +15,7 @@ app.get('/healthz', (req, res) => {
 // Readiness check route
 app.get('/readiness', (req, res) => {
     // Simulate readiness logic (e.g., DB check)
-    const dbReady = true;
+    const dbReady = false;
     if (dbReady) {
         res.status(200).send('Ready');
     } else {

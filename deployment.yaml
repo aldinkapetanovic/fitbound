@@ -14,16 +14,16 @@ spec:
     spec:
       containers:
         - name: fitbound
-          image: fitbound:latest  # Your Docker image
+          image: ghcr.io/aldinkapetanovic/fitbound:latest # Your Docker image
           ports:
             - containerPort: 3000
           resources:
             requests:
-              memory: "64Mi"  # Minimum memory allocated
-              cpu: "50m"      # Minimum CPU allocated (50 millicores)
+              memory: "64Mi" # Minimum memory allocated
+              cpu: "50m" # Minimum CPU allocated (50 millicores)
             limits:
               memory: "128Mi" # Maximum memory allowed
-              cpu: "200m"     # Maximum CPU allowed (200 millicores)
+              cpu: "200m" # Maximum CPU allowed (200 millicores)
           livenessProbe:
             httpGet:
               path: /healthz
