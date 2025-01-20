@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fitbound-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fitbound
+  template:
+    metadata:
+      labels:
+        app: fitbound
+    spec:
+      containers:
+        - name: fitbound
+          image: fitbound:latest  # Your Docker image
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              memory: "64Mi"  # Minimum memory allocated
+              cpu: "50m"      # Minimum CPU allocated (50 millicores)
+            limits:
+              memory: "128Mi" # Maximum memory allowed
+              cpu: "200m"     # Maximum CPU allowed (200 millicores)
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fitbound-service
+spec:
+  selector:
+    app: fitbound
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
