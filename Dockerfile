@@ -11,6 +11,10 @@ RUN npm install
 # Copy the rest of the app code
 COPY . .
 
+# Set default environment variable DB_CONN_CHECK to "true"
+# You can override this variable at runtime in Kubernetes or Docker
+ENV DB_CONN_CHECK=true
+
 # Expose the port the app runs on
 EXPOSE 3000
 
