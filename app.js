@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 let isDbConnected = true; // Default to DB being connected
-const dbCheckInterval = 60000; // Toggle DB status every 10 minutes
+const dbCheckInterval = 600000; // Toggle DB status every 10 minutes
 
 app.use(morgan('combined'));  // You can change the format as needed
 
