@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: fitbound-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: fitbound
@@ -15,6 +15,7 @@ spec:
       containers:
         - name: fitbound
           image: ghcr.io/aldinkapetanovic/fitbound:latest # Your Docker image
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
           resources:
