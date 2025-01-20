@@ -27,7 +27,7 @@ spec:
               cpu: "200m" # Maximum CPU allowed (200 millicores)
           livenessProbe:
             httpGet:
-              path: /healthz
+              path: /liveness
               port: 3000
             initialDelaySeconds: 5
             periodSeconds: 10
