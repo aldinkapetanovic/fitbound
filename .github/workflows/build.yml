@@ -32,5 +32,7 @@ jobs:
       - name: Build and push fitbound image
         working-directory: ./
         run: |
-          docker build -t ghcr.io/${{ github.repository_owner }}/fitbound:latest .
-          docker push ghcr.io/${{ github.repository_owner }}/fitbound:latest
+          docker build -t ghcr.io/${{ github.repository_owner }}/fitbound:${{ vars.BLAH }} .
+          docker tag ghcr.io/${{ github.repository_owner }}/fitbound:${{ vars.BLAH }} ghcr.io/${{ github.repository_owner }}/fitbound:${{ github.sha}}
+          docker tag ghcr.io/${{ github.repository_owner }}/fitbound:${{ vars.BLAH }} ghcr.io/${{ github.repository_owner }}/fitbound:${{ github.ref_name}}
+          docker push ghcr.io/${{ github.repository_owner }}/fitbound:${{ github.ref_name }}
