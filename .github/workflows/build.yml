@@ -36,3 +36,5 @@ jobs:
           docker tag ghcr.io/${{ github.repository_owner }}/fitbound:${{ vars.BLAH }} ghcr.io/${{ github.repository_owner }}/fitbound:${{ github.sha}}
           docker tag ghcr.io/${{ github.repository_owner }}/fitbound:${{ vars.BLAH }} ghcr.io/${{ github.repository_owner }}/fitbound:${{ github.ref_name}}
           docker push ghcr.io/${{ github.repository_owner }}/fitbound:${{ github.ref_name }}
+          docker push ghcr.io/${{ github.repository_owner }}/fitbound:${{ github.sha }}
+          docker push ghcr.io/${{ github.repository_owner }}/fitbound:${{ vars.BLAH }}
